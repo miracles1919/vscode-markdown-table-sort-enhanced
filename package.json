@@ -1,0 +1,68 @@
+{
+  "name": "vscode-markdown-table-sort-enhanced",
+  "displayName": "vscode-markdown-table-sort-enhanced",
+  "description": "Markdown table prettier extension for Visual Studio Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.22.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onCommand:vscode-markdown-table-sort-enhanced.sort",
+    "onCommand:vscode-markdown-table-sort-enhanced.sortFolder"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-markdown-table-sort-enhanced.sort",
+        "title": "Table Sort"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "vscode-markdown-table-sort-enhanced.sort",
+          "when": "explorerResourceIsFolder",
+          "group": "2_workspace"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "vscode-markdown-table-sort-enhanced.sort",
+          "when": "isFileSystemResource && editorFocus",
+          "group": "2_workspace"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "14.x",
+    "@types/prettier": "^2.6.3",
+    "@types/vscode": "^1.67.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.14.0",
+    "glob": "^8.0.1",
+    "mocha": "^9.2.2",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "directory-tree": "^3.3.0",
+    "prettier": "^2.6.2"
+  }
+}
